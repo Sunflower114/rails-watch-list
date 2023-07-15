@@ -1,5 +1,18 @@
 <div class="container">
   <h1> <%= @list.name %> </h1>
-  <p> <%= link_to 'Add a new list', new_list_path %> </p>
+  <div>
+    <ul>
+      <% @list.bookmarks.each do |bookmark| %>
+      <li> <strong>Comment:</strong> <%= bookmark.comment %> </li>
+      <li> <strong>Movie:</strong> <%= bookmark.movie.title %></li>
+      <li> <strong> Rating:</strong> <%= bookmark.movie.rating %> </li>
+      <li> <strong>Poster_url:</strong> <%= bookmark.movie.poster_url %> </li>
+      <li> <strong>Overview:</strong> <%= bookmark.movie.overview %> </li>
+      <hr>
+      <% end %>
+    </ul>
+  </div>
+  <p> <%= link_to 'Add a new movie', new_list_bookmark_path(@list) %> </p>
   <p> <%= link_to 'Back to all lists', lists_path %> </p>
+
 </div>
